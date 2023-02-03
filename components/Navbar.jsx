@@ -11,31 +11,31 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <div className='nav-bar'>
-        <button type="button" className="home-icon">
-          <RiHomeSmileFill />
-        </button>
+      <button type="button" className="home-icon">
+        <RiHomeSmileFill />
+      </button>
+
+      <div className='mid-bar'>
 
         <div className="logo">
           <Link href="/">Toly Cupcakes</Link>
         </div>
+        
+        <div className='nav-bar'>
+          <p className="nav-text">
+            <Link href="/">About</Link>
+          </p>
+          <p className="nav-text">
+            <Link href="/">Contact</Link>
+          </p>
+        </div>
+
       </div>
-
-      <div className='nav-bar'>
-        <p className="nav-text">
-          <Link href="/">About</Link>
-        </p>
-
-        <p className="nav-text">
-          <Link href="/">Contact</Link>
-        </p>
-
-        <button type="button" className="cart-icon" onClick={() => setShowCart(true)}>
-          <p className="cart-text">Cart</p>
-          <RiShoppingBagFill />
-          <span className="cart-item-qty">{totalQuantities}</span>
-        </button>
-      </div>
+      <button type="button" className="cart-icon" onClick={() => setShowCart(true)}>
+        <p className="cart-text">Cart</p>
+        <RiShoppingBagFill />
+        <span className="cart-item-qty">{totalQuantities}</span>
+      </button>
 
       {/*showCart && <Cart />*/}
     </div>
