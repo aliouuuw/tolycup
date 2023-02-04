@@ -6,25 +6,24 @@ import { urlFor } from '../lib/client';
 const HeroBanner = ({ heroBanner }) => {
   return (
     <div className="hero-banner-container">
-      <div className='banner-sec'> 
+      <div className='hero-banner-sec'> 
 
-        <div className='ban-img'>
-          <video className='ban-img' src={heroBanner.bannerDisplay} autoPlay loop muted />
+        <div className='hero-banner-vid'>
+          <video className='vid-size' src={heroBanner.bannerDisplay} autoPlay loop muted />
         </div>
 
-        <div>
-          <div className="hero-banner-text">
-            <h1>{heroBanner.largeText}</h1>
+        <div className="hero-banner-text">
+
+          <div className='hero-banner-text-sec'>
+            <h1>{heroBanner.product}</h1>
             <p>{heroBanner.desc}</p>
-
-            <div className='hero-banner-button'>
-              <Link href={`/product/${heroBanner.product}`}>
-                <button type="button">{heroBanner.buttonText}</button>
-              </Link>
-            </div>
+            <div className='largetext'>{heroBanner.largeText}</div>
           </div>
+          <Link href={`/`}>
+              <button type="button">{heroBanner.buttonText}</button>
+          </Link>
+        
         </div>
-
       </div>
     </div>
   )
