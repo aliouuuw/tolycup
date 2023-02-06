@@ -11,7 +11,37 @@ const Navbar = () => {
 
   return (
     <div className="navbar-container">
-      <button type="button" className="home-icon">
+
+      <div className='navbar-sec-left'> 
+        <button type="button" aria-label='home page button' className="navicon">
+          <RiHomeSmileFill />
+        </button>
+      </div>
+
+      <div className="navbar-sec-mid">
+        <div className='logo'>
+          <a className='cupck' href="/"><span className='toly'>Toly</span> Cupcakes</a>
+        </div>
+      </div>
+
+      <div className='navbar-sec-right'>
+        
+        <div className='navbar-side'>
+          <p className="navbar-text">
+            <Link href="/">About</Link>
+          </p>
+          <p className="navbar-text">
+            <Link href="/">Contact</Link>
+          </p>
+          <button type="button" className="cart-icon" onClick={() => setShowCart(true)}>
+            <p className="navbar-text">Cart</p>
+            <RiShoppingBagFill />
+            <span className="cart-item-qty">{totalQuantities}</span>
+          </button>
+        </div>
+      </div>
+
+      {/*<button type="button" aria-label='home page button' className="home-icon">
         <RiHomeSmileFill />
       </button>
 
@@ -35,7 +65,7 @@ const Navbar = () => {
         <p className="cart-text">Cart</p>
         <RiShoppingBagFill />
         <span className="cart-item-qty">{totalQuantities}</span>
-      </button>
+  </button>*/}
 
       {/*showCart && <Cart />*/}
     </div>

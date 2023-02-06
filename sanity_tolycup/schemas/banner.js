@@ -9,6 +9,11 @@ export default {
             type: 'file',
         },
         {
+            name: 'image',
+            title: 'Image',
+            type: 'image',
+        },
+        {
             name: 'buttonText',
             title: 'ButtonText',
             type: 'string',

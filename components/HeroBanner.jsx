@@ -4,26 +4,24 @@ import Link from 'next/link';
 import { urlFor } from '../lib/client';
 
 const HeroBanner = ({ heroBanner }) => {
+  const imageUrl = heroBanner.bannerImg;
   return (
-    <div className="hero-banner-container">
+    <div className="hero-banner-container" style={{backgroundImage:`url(${imageUrl})`}}>
       <div className='hero-banner-sec'> 
 
-        <div className='hero-banner-vid'>
+        {/*<div className='hero-banner-vid'>
           <video className='vid-size' src={heroBanner.bannerDisplay} autoPlay loop muted />
-        </div>
+          <img src={imageUrl} alt="three cupcakes" />
+          <video className='vid-size' src={heroBanner.bannerDisplay} autoPlay loop muted />
+        </div>*/}
 
-        <div className="hero-banner-text">
 
           <div className='hero-banner-text-sec'>
             <h1>{heroBanner.product}</h1>
-            <p>{heroBanner.desc}</p>
-            <div className='largetext'>{heroBanner.largeText}</div>
+            <div>Shop now</div>
           </div>
-          <Link href={`/`}>
-              <button type="button">{heroBanner.buttonText}</button>
-          </Link>
         
-        </div>
+        
       </div>
     </div>
   )
