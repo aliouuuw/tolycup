@@ -6,8 +6,9 @@ import { Product, HeroBanner, FooterBanner } from '../components';
 const Home = ({ products, bannerData }) => (
   <div>
     <HeroBanner heroBanner={bannerData.length && bannerData[0]}  />
-    <div className="products-heading">
-      <h2>Endless Flavors</h2>
+    <FooterBanner footerBanner={bannerData.length && bannerData[0]}  />
+    <div id='catalogue' className="products-heading">
+      <h2>Timeless Treats</h2>
     </div>
 
     <div className="products-container">

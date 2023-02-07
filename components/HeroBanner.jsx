@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import {Link} from 'react-scroll';
 
 import { urlFor } from '../lib/client';
 
@@ -8,20 +8,14 @@ const HeroBanner = ({ heroBanner }) => {
   return (
     <div className="hero-banner-container" style={{backgroundImage:`url(${imageUrl})`}}>
       <div className='hero-banner-sec'> 
-
-        {/*<div className='hero-banner-vid'>
-          <video className='vid-size' src={heroBanner.bannerDisplay} autoPlay loop muted />
-          <img src={imageUrl} alt="three cupcakes" />
-          <video className='vid-size' src={heroBanner.bannerDisplay} autoPlay loop muted />
-        </div>*/}
-
-
           <div className='hero-banner-text-sec'>
             <h1>{heroBanner.product}</h1>
-            <div>Shop now</div>
-          </div>
-        
-        
+            <div className='shopnow'>
+              <Link to="catalogue" spy={true} smooth={true} offset={-70} duration={500}>
+                <button type='button'>Shop now</button>
+              </Link>
+            </div>
+          </div> 
       </div>
     </div>
   )
