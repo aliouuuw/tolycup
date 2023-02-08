@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { CiShoppingCart, CiHome } from 'react-icons/ci';
+import { HiShoppingBag, HiHome } from 'react-icons/hi';
 
 
 import { Cart } from './';
@@ -12,10 +12,12 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
 
-      <div className='navbar-sec-left'> 
-        <button type="button" aria-label='home page button' className="navicon">
-          <CiHome />
-        </button>
+      <div className='navbar-sec-left'>
+        <Link href="/">
+          <button type="button" aria-label='home page button' className="navicon">
+            <HiHome />
+          </button>
+        </Link>
       </div>
 
       <div className="navbar-sec-mid">
@@ -25,24 +27,24 @@ const Navbar = () => {
       </div>
 
       <div className='navbar-sec-right'>
-        
+
         <div className='navbar-side'>
           <div className='navbar-item'>
             <p className="navbar-text">
-              <Link href="/">About</Link>
+              <Link href="/about">About</Link>
             </p>
           </div>
 
           <div className='navbar-item'>
             <p className="navbar-text">
-              <Link href="/">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </p>
           </div>
 
-          
-          
+
+
           <button type="button" className="cart-icon" onClick={() => setShowCart(true)}>
-            <CiShoppingCart />
+            <HiShoppingBag />
             <span className="cart-item-qty">{totalQuantities}</span>
           </button>
 

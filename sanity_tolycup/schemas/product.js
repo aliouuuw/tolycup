@@ -32,6 +32,11 @@ export default {
         type: 'number',
       },
       { 
+        name: 'price2',
+        title: 'Price2',
+        type: 'number',
+      },
+      { 
         name: 'details',
         title: 'Details',
         type: 'string',

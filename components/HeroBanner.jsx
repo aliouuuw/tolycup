@@ -4,9 +4,8 @@ import {Link} from 'react-scroll';
 import { urlFor } from '../lib/client';
 
 const HeroBanner = ({ heroBanner }) => {
-  const imageUrl = heroBanner.bannerImg;
   return (
-    <div className="hero-banner-container" style={{backgroundImage:`url(${imageUrl})`}}>
+    <div className="hero-banner-container" style={{backgroundImage:`url(${heroBanner.bannerImg})`}}>
       <div className='hero-banner-sec'> 
           <div className='hero-banner-text-sec'>
             <h1>{heroBanner.product}</h1>

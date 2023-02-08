@@ -6,7 +6,7 @@ import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
-  const { image, name, details, price } = product;
+  const { image, name, details, price, price2 } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
@@ -51,9 +51,32 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <h4>Details: </h4>
           <p>{details}</p>
-          <p className="price">${price}</p>
+
+          <h4>Options: </h4>
+          <div className='options-container'>
+            <div class="option-card">
+              <input type="radio" name="price" value={price} id="lowPrice" />
+              <label for="lowPrice">
+                <h5>Box of 4</h5>
+                <h2>
+                  <span>${price}</span>
+                </h2>
+              </label>
+            </div>
+
+            <div class="option-card">
+              <input type="radio" name="price" value={price2} id="highPrice" />
+              <label for="highPrice">
+                <h5>Box of 6</h5>
+                <h2>
+                  <span>${price2}</span>
+                </h2>
+              </label>
+            </div>
+          </div>
+
+          <h4>Quantity: </h4>
           <div className="quantity">
-            <h3>Quantity:</h3>
             <p className="quantity-desc">
               <span className="minus" onClick={decQty}><AiOutlineMinus /></span>
               <span className="num">{qty}</span>
