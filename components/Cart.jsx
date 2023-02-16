@@ -16,12 +16,11 @@ const Cart = () => {
   const router = useRouter();
 
 
-  const handleCheckout = async () => {
-    console.log('Checkout')
+  //PAY WITH STRIPE
 
-    //PAY WITH STRIPE
+  /*const payStrip = () =>{
 
-    /*const stripe = await getStripe();
+    const stripe = await getStripe();
 
     const response = await fetch('/api/stripe', {
       method: 'POST',
@@ -37,9 +36,14 @@ const Cart = () => {
 
     toast.loading('Redirecting...');
 
-    stripe.redirectToCheckout({ sessionId: data.id });*/
+    stripe.redirectToCheckout({ sessionId: data.id });
+  };*/
 
-    //PAY WITH WAVE
+
+  //PAY WITH WAVE
+
+  const handleCheckout = async () => {
+    console.log('Checkout')
 
     const generateUniqueReference = () => {
       // generate a random string for the reference

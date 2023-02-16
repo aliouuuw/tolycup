@@ -19,8 +19,8 @@ export default async function handler(req, res) {
             let headers = {
                 Accept: "application/json",
                 'Content-Type': "application/json",
-                API_KEY: "bcdb5be577d9b16277346ae5deb8284f6d11bdf370d84ebb39e77b26658c3f71",
-                API_SECRET: "5097977dc575e54ba7f489ae0cf72a4cf9104532bfb30fb0d3949ce8372216fc",
+                API_KEY: process.env.NEXT_PUBLIC_PAYTECH_API_KEY,
+                API_SECRET: process.env.NEXT_PUBLIC_PAYTECH_API_SECRET,
             };
 
             const session = await fetch(paymentRequestUrl, {
