@@ -2,17 +2,80 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
+import { useRouter } from 'next/router';
 import toast from 'react-hot-toast';
+import getStripe from '@/lib/getStripe';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+
+  const router = useRouter();
+
 
   const handleCheckout = async () => {
+    console.log('Checkout')
 
+    //PAY WITH STRIPE
+
+    /*const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if(response.statusCode === 500) return;
+    
+    const data = await response.json();
+
+    toast.loading('Redirecting...');
+
+    stripe.redirectToCheckout({ sessionId: data.id });*/
+
+    //PAY WITH WAVE
+
+    const generateUniqueReference = () => {
+      // generate a random string for the reference
+      let randomString = Math.random().toString(36).substr(2, 6);
+    
+      // add a timestamp to the randomString
+      let timestamp = Date.now();
+    
+      // combine the two
+      let uniqueReference = `${randomString}_${timestamp}`;
+    
+      return uniqueReference;
+    };
+
+    const commandRef = generateUniqueReference()
+
+    const body = {cartItems,totalPrice,commandRef};
+
+    console.log({body});
+
+    const response = await fetch('/api/paytech', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if(response.statusCode === 500) return;
+
+    const data = await response.json();
+
+    toast.loading('Redirecting...');
+
+    router.push(data.redirectUrl);
+    
   }
 
   return (
@@ -55,11 +118,11 @@ const Cart = () => {
                 <div className="flex bottom">
                   <div>
                   <p className="quantity-desc">
-                    <span className="minus" onClick={() => toggleCartItemQuanitity(item._id, 'dec') }>
+                    <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec') }>
                     <AiOutlineMinus />
                     </span>
-                    <span className="num" onClick="">{item.quantity}</span>
-                    <span className="plus" onClick={() => toggleCartItemQuanitity(item._id, 'inc') }><AiOutlinePlus /></span>
+                    <span className="num">{item.quantity}</span>
+                    <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc') }><AiOutlinePlus /></span>
                   </p>
                   </div>
                   <button
@@ -82,7 +145,7 @@ const Cart = () => {
             </div>
             <div className="btn-container">
               <button type="button" className="btn" onClick={handleCheckout}>
-                Pay with Stripe
+                Checkout
               </button>
             </div>
           </div>

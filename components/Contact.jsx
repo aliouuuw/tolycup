@@ -14,7 +14,7 @@ const validSchema = yup.object().shape({
 
 
 const Contact = () => {
-    //const form = useRef();
+    const form = useRef();
     let serviceId = process.env.NEXT_PUBLIC_SERVICE_ID
     let templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
     let userId = process.env.NEXT_PUBLIC_USER_ID;
@@ -27,16 +27,14 @@ const Contact = () => {
     const { register, handleSubmit, reset, formState } = useForm(formOptions);
     const { errors } = formState;
 
-    function onSubmit(data) {
+    /*const onSubmit = (data) => {
         // display form data on success
-        sendEmail();
         console.log(data);
         return false;
-    }
+    }*/
     const sendEmail = () => {
-        e.preventDefault();
 
-
+        console.log(form.current);
 
         emailjs
             .sendForm(
@@ -48,7 +46,7 @@ const Contact = () => {
             .then(
                 (result) => {
                     toast.success(`Your message was successfully sent!`);
-                    document.getElementById('myForm').reset();
+                    reset();
                     console.log(result.text);
                     console.log("message sent");
                 },
@@ -60,7 +58,8 @@ const Contact = () => {
 
     return (
         <div className="contact-form-container">
-            <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
+            <h1 className='basic-banner-header'>We'd love to hear from you</h1>
+            <form ref={form} className='contact-form' onSubmit={handleSubmit(sendEmail)}>
                 <label>Name</label>
                 <input style={{border: errors?.userName ? '2px solid red' : ''}} type="text" name="userName" {...register('userName')}/>
                 <p className="red">{errors?.userName?.message}</p>

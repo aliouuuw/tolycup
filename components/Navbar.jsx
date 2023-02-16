@@ -10,7 +10,7 @@ const Navbar = () => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
 
   return (
-    <div className="navbar-container">
+    <div id='navbar' className="navbar-container">
 
       <div className='navbar-sec-left'>
         <Link href="/">
@@ -22,7 +22,9 @@ const Navbar = () => {
 
       <div className="navbar-sec-mid">
         <div className='logo'>
-          <a className='cupck' href="/"><span className='toly'>Toly</span> Cupcakes</a>
+          <Link href="/">
+            <a className='cupck'><span className='toly'>Toly</span> Cupcakes</a>
+          </Link>
         </div>
       </div>
 

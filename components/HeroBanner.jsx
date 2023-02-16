@@ -5,9 +5,9 @@ import { urlFor } from '../lib/client';
 
 const HeroBanner = ({ heroBanner }) => {
   return (
-    <div className="hero-banner-container" style={{backgroundImage:`url(${heroBanner.bannerImg})`}}>
-      <div className='hero-banner-sec'> 
-          <div className='hero-banner-text-sec'>
+    <div className="hero-banner-container">
+      <div className='hero-banner-sec-text'> 
+          <div className='hero-banner-text'>
             <h1>{heroBanner.product}</h1>
             <div className='shopnow'>
               <Link to="catalogue" spy={true} smooth={true} offset={-70} duration={500}>
@@ -16,6 +16,10 @@ const HeroBanner = ({ heroBanner }) => {
             </div>
           </div> 
       </div>
+      <div className='hero-banner-sec-im'>
+        <img className='hero-banner-image' src={heroBanner.bannerImg} alt="hero banner image" />
+      </div>
+
     </div>
   )
 }
