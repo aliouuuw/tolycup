@@ -15,14 +15,14 @@ const Home = ({ smallproducts, largeproducts, bannerData }) => {
     <div className="products-title">
       <p>Boxes of 4</p>
     </div>
-    <div className="products-container">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3">
       {smallproducts?.map((product) => <Product key={product._id} product={product} />)}
     </div>
     
     <div className="products-title">
       <p>Boxes of 6 - L</p>
     </div>
-    <div className="products-container">
+    <div className="grid md:grid-cols-2 lg:grid-cols-3">
       {largeproducts?.map((product) => <Product key={product._id} product={product} />)}
     </div>
   </div>

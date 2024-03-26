@@ -13,7 +13,7 @@ const Navbar = () => {
     <div id='navbar' className="navbar-container">
 
       <div className='navbar-sec-left'>
-        <Link href="/">
+        <Link href="/" passHref>
           <button type="button" aria-label='home page button' className="navicon">
             <HiHome />
           </button>
@@ -22,7 +22,7 @@ const Navbar = () => {
 
       <div className="navbar-sec-mid">
         <div className='logo'>
-          <Link href="/">
+          <Link href="/" passHref legacyBehavior>
             <a className='cupck'><span className='toly'>Toly</span> Cupcakes</a>
           </Link>
         </div>

@@ -98,7 +98,7 @@ const Cart = () => {
           <div className="empty-cart">
             <AiOutlineShopping style={{fontSize:'150'}}/>
             <h3>Your shopping bag is empty</h3>
-            <Link href="/">
+            <Link href="/" passHref>
               <button
                 type="button"
                 onClick={() => setShowCart(false)}
