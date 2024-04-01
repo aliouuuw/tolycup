@@ -58,7 +58,7 @@ const Contact = () => {
 
     return (
         <div className="contact-form-container">
-            <h1 className='basic-banner-header'>We'd love to hear from you</h1>
+            <h1 className='basic-banner-header'>We&apos;d love to hear from you</h1>
             <form ref={form} className='contact-form' onSubmit={handleSubmit(sendEmail)}>
                 <label>Name</label>
                 <input style={{border: errors?.userName ? '2px solid red' : ''}} type="text" name="userName" {...register('userName')}/>

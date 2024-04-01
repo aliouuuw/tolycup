@@ -4,6 +4,7 @@ import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
+import Image from 'next/image';
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
@@ -20,14 +21,16 @@ const ProductDetails = ({ product, products }) => {
     <div>
       <div className="product-detail-container">
         <div>
-          <div>
-            <img src={urlFor(image && image[index])} className="product-detail-image" />
+          <div className='relative overflow-hidden w-56 h-64'>
+            <Image alt='Cake image' src={urlFor(image && image[index]).url()} fill className="product-detail-image" />
           </div>
-          <div className="small-images-container">
+          <div className="small-images-container relative overflow-hidden w-12 h-12">
             {image?.map((item, i) => (
-              <img 
+              <Image 
                 key={i}
-                src={urlFor(item)}
+                alt='Cake image'
+                src={urlFor(item).url()}
+                fill
                 className={i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)}
               />
@@ -38,7 +41,7 @@ const ProductDetails = ({ product, products }) => {
         <div className="product-detail-desc">
           <h1>{name}</h1>
           <div className="reviews">
-            <div>
+            <div className='flex'>
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
@@ -53,12 +56,12 @@ const ProductDetails = ({ product, products }) => {
           <p>{details}</p>
           <p className="price">${price}</p>
             <h4>Quantity: </h4>
-          <div className="quantity">
-            <p className="quantity-desc">
-              <span className="minus" onClick={decQty}><AiOutlineMinus /></span>
-              <span className="num">{qty}</span>
-              <span className="plus" onClick={incQty}><AiOutlinePlus /></span>
-            </p>
+          <div className="flex">
+            <div className="flex items-center justify-between border border-black">
+              <span className="flex flex-col justify-center h-full py-2 px-2 hover:cursor-pointer" onClick={decQty}><AiOutlineMinus color='red' /></span>
+              <span className="flex flex-col justify-center h-full border-x border-black py-2 px-4">{qty}</span>
+              <span className="flex flex-col justify-center h-full py-2 px-2 hover:cursor-pointer " onClick={incQty}><AiOutlinePlus color='green' /></span>
+            </div>
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
